@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAPS Report - 양소영</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Century Gothic','Noto Sans KR',CenturyGothic,sans-serif; background:#f0ebe3; min-height:100vh; }
+.maps-header { background:#f0ebe3; padding:2.5rem 2rem 1.5rem; text-align:center; border-bottom:1px solid #c9b9a8; }
+.maps-logo { font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:2rem; font-weight:700; letter-spacing:0.35em; color:#5a4a3a; }
+.maps-tagline { font-size:10px; letter-spacing:0.2em; color:#9a8a7a; margin-top:4px; text-transform:uppercase; }
+.member-bar { background:#e8dfd5; padding:1.2rem 2rem; display:flex; gap:2rem; flex-wrap:wrap; }
+.member-bar-item { font-size:12px; color:#7a6a5a; }
+.member-bar-item span { font-family:'Noto Sans KR',sans-serif; font-weight:500; color:#3a2d20; margin-left:6px; }
+.tab-row { background:#f0ebe3; padding:0 2rem; display:flex; border-bottom:1px solid #c9b9a8; overflow-x:auto; }
+.tab-btn { font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:11px; letter-spacing:0.1em; color:#9a8a7a; background:none; border:none; border-bottom:2px solid transparent; padding:0.9rem 1.2rem; cursor:pointer; white-space:nowrap; }
+.tab-btn.active { color:#8b4a32; border-bottom-color:#8b4a32; font-weight:700; }
+.report-body { padding:2rem; max-width:720px; margin:0 auto; }
+.report-title-row { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:2rem; }
+.report-session-label { font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:2.2rem; font-weight:700; color:#3a2d20; line-height:1.2; }
+.report-date-badge { font-size:11px; color:#9a8a7a; letter-spacing:0.1em; text-align:right; line-height:2; }
+.section-title { font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:11px; font-weight:700; color:#5a4a3a; letter-spacing:0.2em; margin:1.8rem 0 1rem; padding-bottom:0.4rem; border-bottom:0.5px solid #c9b9a8; text-transform:uppercase; }
+.score-row { display:flex; align-items:center; justify-content:space-between; padding:0.55rem 0; }
+.score-label { font-family:'Noto Sans KR',sans-serif; font-size:13px; color:#5a4a3a; flex:1; font-weight:300; }
+.dot-scale { display:flex; gap:10px; }
+.dot { width:10px; height:10px; border-radius:50%; background:#c9b9a8; }
+.dot.filled { background:#8b4a32; }
+.comment-box { background:#e8dfd5; border-left:3px solid #8b4a32; padding:1.2rem 1.5rem; margin-top:0.5rem; border-radius:0 6px 6px 0; }
+.comment-text { font-family:'Noto Sans KR',sans-serif; font-size:13.5px; line-height:1.9; color:#3a2d20; font-weight:300; }
+.progress-title { font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:1.4rem; font-weight:700; color:#3a2d20; margin-bottom:1.2rem; }
+.progress-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; }
+.progress-card { background:#e8dfd5; border-radius:8px; padding:1rem; text-align:center; }
+.progress-card-label { font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:10px; color:#9a8a7a; letter-spacing:0.15em; margin-bottom:6px; text-transform:uppercase; }
+.progress-card-value { font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:2rem; font-weight:700; color:#8b4a32; }
+.progress-card-sub { font-family:'Noto Sans KR',sans-serif; font-size:11px; color:#9a8a7a; margin-top:2px; }
+.progress-change { font-family:'Noto Sans KR',sans-serif; font-size:12px; color:#9a8a7a; }
+.footer { text-align:center; padding:2rem; font-family:'Century Gothic',CenturyGothic,sans-serif; font-size:10px; color:#b0a090; letter-spacing:0.2em; border-top:0.5px solid #c9b9a8; margin-top:2rem; text-transform:uppercase; }
+.report-panel { display:none; }
+.report-panel.active { display:block; }
+</style>
+</head>
+<body>
+<div class="maps-header">
+  <div class="maps-logo">MAPS</div>
+  <div class="maps-tagline">Movement Analysis &amp; Progress Summary</div>
+</div>
+<div class="member-bar">
+  <div class="member-bar-item">Name <span>양소영</span></div>
+  <div class="member-bar-item">Instructor <span>김미혜,윤설아</span></div>
+  <div class="member-bar-item">Start <span>2025.7.7</span></div>
+  <div class="member-bar-item">Total Sessions <span>118</span></div>
+</div>
+<div class="tab-row"><button class="tab-btn active" onclick="showTab(0)">118 Report</button><button class="tab-btn" onclick="showTab(1)">Progress</button></div>
+<div class="report-body">
+    <div class="report-panel active" id="panel-0">
+      <div class="report-title-row">
+        <div class="report-session-label">118<br>Report</div>
+        <div class="report-date-badge">Period<br>2025.7.8~2026.5.29<br>Instructor 김미혜,윤설아</div>
+      </div>
+      <div class="section-title">1. Posture &amp; Alignment</div>
+      <div class="score-row"><span class="score-label">어깨 정렬</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">골반 정렬</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">좌우 밸런스</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="section-title">2. Movement Quality</div>
+      <div class="score-row"><span class="score-label">동작 연결성</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">불필요한 힘 사용</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">속도 조절 / 협응력</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">중심 이동 컨트롤</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="section-title">3. Mind Note</div>
+      <div class="score-row"><span class="score-label">집중도</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">호흡 반응</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">긴장감</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="score-row"><span class="score-label">세션 후 상태</span><div class="dot-scale"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="section-title">Instructor Comment</div>
+      <div class="comment-box"><div class="comment-text">모든 평가항목에서 높은 평가를 받으신 우리 소영님!<br>좌우 발란스 너무 좋으시고 협응력, 집중력, 파워하우스 끌어올림도 거의 완벽하세요!<br>나무랄것 없는 소영님이시지만,<br>목디스크, 플랫한 등 으로 요추(허리)굴곡이 낮아 플랫한 윗등에서 오는 불편함이 동작에서도 나타납니다.<br><br>일상속 추천드리는 자세<br>1. 벽에 등을 대고 허리뒤는 손가락이 들어갈정도 공간 남긴후 하복부 부드럽게 끌어올리기<br>2. 폐호흡 (흉곽 호흡)<br>3. 갈비뼈 일부러 꽉 닫지 않기 :)<br><br>파워하우스는 충분하시니 척추 회전&굴곡을 자유롭게 하여 더 편안한 바디 만들어보아요 </div></div>
+    </div>
+  <div class="report-panel" id="panel-1">
+    <div class="progress-title">Progress Overview</div>
+    <div class="progress-grid">
+      <div class="progress-card">
+        <div class="progress-card-label">Total Sessions</div>
+        <div class="progress-card-value">118</div>
+        <div class="progress-card-sub">누적 수업</div>
+      </div>
+      <div class="progress-card">
+        <div class="progress-card-label">Reports</div>
+        <div class="progress-card-value">1</div>
+        <div class="progress-card-sub">리포트 횟수</div>
+      </div>
+      <div class="progress-card">
+        <div class="progress-card-label">Since</div>
+        <div class="progress-card-value" style="font-size:1.2rem;">2025.7.</div>
+        <div class="progress-card-sub">시작일</div>
+      </div>
+    </div>
+    <div class="section-title" style="margin-top:2rem;">Posture &amp; Alignment</div>
+    
+      <div class="score-row"><span class="score-label">어깨 정렬</span><div class="progress-change">118 ●●●●○</div></div>
+    
+    <div class="score-row"><span class="score-label">골반 정렬</span><div class="progress-change">118 ●●●●○</div></div>
+    <div class="score-row"><span class="score-label">좌우 밸런스</span><div class="progress-change">118 ●●●●○</div></div>
+    <div class="section-title">Movement Quality</div>
+    <div class="score-row"><span class="score-label">동작 연결성</span><div class="progress-change">118 ●●●●○</div></div>
+    <div class="score-row"><span class="score-label">중심 이동 컨트롤</span><div class="progress-change">118 ●●●●○</div></div>
+    <div class="section-title">Mind Note</div>
+    <div class="score-row"><span class="score-label">집중도</span><div class="progress-change">118 ●●●●○</div></div>
+    <div class="score-row"><span class="score-label">세션 후 상태</span><div class="progress-change">118 ●●●●○</div></div>
+  </div></div>
+<div class="footer">MAPS Pilates Studio · Confidential Member Report</div>
+<script>
+function showTab(idx) {
+  document.querySelectorAll('.tab-btn').forEach(function(b,i){b.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.report-panel').forEach(function(p,i){p.classList.toggle('active',i===idx);});
+}
+</script>
+</body>
+</html>
